@@ -1,0 +1,24 @@
+ {
+    "lat": "45.07049N",
+    "lon": "7.68682E",
+    "elevation": 239,
+    "timezone": "Europe/Rome",
+    "units": "metric",
+    "current": {
+        "icon": "clear",
+        "icon_num": 26,
+        "summary": "Clear",
+        "temperature": 4.2,
+        "feels_like": 4.0,
+        "wind_chill": 3.0,
+        "dew_point": -0.8,
+        "wind": {"speed": 1.6, "gusts": 2.1, "angle": 210, "dir": "SSW"},
+        "precipitation": {"total": 0.0, "type": "none"},
+        "cloud_cover": 5,
+        "ozone": 299.89,
+        "pressure": 1057,
+        "uv_index": 0.0,
+        "humidity": 85,
+        "visibility": 9.04
+    }
+}
