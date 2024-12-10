@@ -4,37 +4,42 @@ import { useWeather } from "../context/weather.context";
 export default function HourlyForecastWidget({ data }) {
   const { summary, icon, wind, precipitation, temperature, date } = data;
   const { units } = useWeather();
-
+  
+  const local = navigator.language;
   const now_date = {
-    day: new Intl.DateTimeFormat(navigator.language, {
+    day: new Intl.DateTimeFormat(local, {
       weekday: "short",
       day: "2-digit",
       month: "2-digit",
     }).format(new Date()),
-    time: new Intl.DateTimeFormat(navigator.language, {
+    time: new Intl.DateTimeFormat(local, {
       hour: "2-digit",
       minute: "2-digit",
-      hourCycle: "h23",
+  //    hourCycle: "h23",
     }).format(new Date().setMinutes(0)),
   };
 
   let weather_date = {
-    day: new Intl.DateTimeFormat(navigator.language, {
+    day: new Intl.DateTimeFormat(local, {
       weekday: "short",
       day: "2-digit",
       month: "2-digit",
     }).format(new Date(date)),
-    time: new Intl.DateTimeFormat(navigator.language, {
+    time: new Intl.DateTimeFormat(local, {
       hour: "2-digit",
       minute: "2-digit",
-      hourCycle: "h23",
+   //   hourCycle: "h23",
     }).format(new Date(date).setMinutes(0)),
   };
+  const midnightTime = new Intl.DateTimeFormat(local, {
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date().setHours(0,0,0,0));
 
   weather_date.day =
     weather_date.day === now_date.day && weather_date.time === now_date.time
       ? "Now"
-      : weather_date.time === "00:00"
+      : weather_date.time === midnightTime
       ? weather_date.day
       : "";
 
@@ -44,7 +49,7 @@ export default function HourlyForecastWidget({ data }) {
         {weather_date.day}
       </div>
       <div>{weather_date.time}</div>
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center mt-1">
         <div>
           <img
             src={`/dist/weather_icons/set03/small/${icon}.png`}
