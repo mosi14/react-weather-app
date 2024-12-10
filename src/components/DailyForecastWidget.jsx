@@ -41,6 +41,7 @@ export default function DailyForecastWidget({ data }) {
           <img
             src={`/dist/weather_icons/set03/small/${icon}.png`}
             alt={summary}
+            draggable={false}
           />
         </div>
         <div>
