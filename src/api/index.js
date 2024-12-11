@@ -1,22 +1,23 @@
 import axios from "axios";
+const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
 export async function getWeatherData(endpoint, place_id, measurementSystem) {
-  const API_KEY = import.meta.env.REACT_API_KEY
-
 
   const options = {
     method: "GET",
-    url: `https://ai-weather-by-meteosource.p.rapidapi.com/${endpoint}`,
+    url: `https://www.meteosource.com/api/v1/free/point`,
     params: {
       place_id,
-      timezone: "auto",
+      sections: endpoint,
       language: "en",
+     // timezone: "auto",
       units: measurementSystem,
+      key: API_KEY,
     },
-    headers: {
-      "x-rapidapi-key": API_KEY,
-      "x-rapidapi-host": "ai-weather-by-meteosource.p.rapidapi.com",
-    },
+    // headers: {
+    //   "x-rapidapi-key": API_KEY,
+    //   "x-rapidapi-host": "ai-weather-by-meteosource.p.rapidapi.com",
+    // },
   };
 
   try {
@@ -28,17 +29,19 @@ export async function getWeatherData(endpoint, place_id, measurementSystem) {
 }
 
 export async function searchPlaces(text) {
+
   const options = {
     method: "GET",
-    url: "https://ai-weather-by-meteosource.p.rapidapi.com/find_places",
+    url: "https://www.meteosource.com/api/v1/free/find_places",//"https://ai-weather-by-meteosource.p.rapidapi.com/find_places",
     params: {
       text,
       language: "en",
+      key: API_KEY,
     },
-    headers: {
-      "x-rapidapi-key": API_KEY,
-      "x-rapidapi-host": "ai-weather-by-meteosource.p.rapidapi.com",
-    },
+    // headers: {
+    //   "x-rapidapi-key": API_KEY,
+    //   "x-rapidapi-host": "ai-weather-by-meteosource.p.rapidapi.com",
+    // },
   };
 
   try {

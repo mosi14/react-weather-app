@@ -13,7 +13,7 @@ export default function Main() {
       {loading ? (
         <Loader />
       ) : (
-        <main className="sm:container mx-auto w-11/12">
+        <main className="sm:container mx-auto w-11/12 min-h-screen">
           <CurrentWeather data={currentWeather} />
           <Forecast
             type="hourly"
