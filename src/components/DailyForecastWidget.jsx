@@ -2,14 +2,9 @@ import React from "react";
 import { useWeather } from "../context/weather.context";
 
 export default function DailyForecastWidget({ data }) {
-  const {
-    day,
-    icon,
-    summary,
-    temperature_max,
-    temperature_min,
-    predictability,
-  } = data;
+  const { day, icon, summary, all_day } = data;
+
+  const { temperature_max, temperature_min } = all_day;
 
   const { units } = useWeather();
 
@@ -53,9 +48,9 @@ export default function DailyForecastWidget({ data }) {
           </div>
         </div>
       </div>
-      <div className="mt-2 text-xs">
+      {/* <div className="mt-2 text-xs">
         {Math.round(predictability)} {units.precipitation}
-      </div>
+      </div> */}
     </div>
   );
 }

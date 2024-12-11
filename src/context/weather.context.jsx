@@ -19,15 +19,16 @@ function WeatherProvider({ children }) {
     async function _getWeatherData() {
       setLoading(true);
 
-      const cw = await getWeatherData("current", place.place_id, measurementSystem);
+      const cw = await getWeatherData( place.place_id, measurementSystem);
       setCurrentWeather(cw.current);
       setUnits(UNITS[cw.units]);
 
-      const hf = await getWeatherData("hourly", place.place_id, measurementSystem);
-      setHourlyForecast(hf.hourly.data);
-
-      const df = await getWeatherData("daily", place.place_id, measurementSystem);
-      setDailyForecast(df.daily.data);
+     // const hf = await getWeatherData("hourly", place.place_id, measurementSystem);
+      setHourlyForecast(cw.hourly.data);
+      console.log('hourly: ',cw.hourly.data)
+      //const df = await getWeatherData("daily", place.place_id, measurementSystem);
+      setDailyForecast(cw.daily.data);
+      console.log('daily: ',cw.daily.data)
 
       setLoading(false);
     }

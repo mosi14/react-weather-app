@@ -1,16 +1,14 @@
 import axios from "axios";
 const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
-export async function getWeatherData(endpoint, place_id, measurementSystem) {
-
+export async function getWeatherData(place_id, measurementSystem) {
   const options = {
     method: "GET",
     url: `https://www.meteosource.com/api/v1/free/point`,
     params: {
       place_id,
-      sections: endpoint,
+      sections: "all",
       language: "en",
-     // timezone: "auto",
       units: measurementSystem,
       key: API_KEY,
     },
@@ -29,10 +27,9 @@ export async function getWeatherData(endpoint, place_id, measurementSystem) {
 }
 
 export async function searchPlaces(text) {
-
   const options = {
     method: "GET",
-    url: "https://www.meteosource.com/api/v1/free/find_places",//"https://ai-weather-by-meteosource.p.rapidapi.com/find_places",
+    url: "https://www.meteosource.com/api/v1/free/find_places", 
     params: {
       text,
       language: "en",
