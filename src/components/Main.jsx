@@ -23,7 +23,7 @@ export default function Main() {
           <br />
           <Forecast
             type="daily"
-            title="21 DAYS FORECAST"
+            title="7 DAYS FORECAST"
             data={dailyForecast}
           />
         </main>
